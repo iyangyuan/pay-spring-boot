@@ -1,0 +1,89 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.yangyuan</groupId>
+	<artifactId>pay-spring-boot</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+    
+    <!-- NOTE: Change to yourself parent project -->
+    <parent>
+		<groupId>org.yangyuan</groupId>
+		<artifactId>yangyuan</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<name>pay-spring-boot</name>
+	<url>https://github.com/iyangyuan/pay-spring-boot</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<httpclient-version>4.5.3</httpclient-version>
+		<fastjson-version>1.2.31</fastjson-version>
+		<commons-logging-version>1.2</commons-logging-version>
+		<commons-lang3-version>3.4</commons-lang3-version>
+		<commons-codec-version>1.9</commons-codec-version>
+		<redis-version>2.9.0</redis-version>
+		<dom4j-version>1.6.1</dom4j-version>
+	</properties>
+
+	<dependencies>
+
+		<!-- springframework -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- apache commons -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons-logging-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec-version}</version>
+		</dependency>
+
+		<!-- http -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>${httpclient-version}</version>
+		</dependency>
+
+		<!-- redis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${redis-version}</version>
+		</dependency>
+
+		<!-- json -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>${dom4j-version}</version>
+		</dependency>
+
+	</dependencies>
+</project>

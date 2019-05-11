@@ -204,7 +204,7 @@ public class PayHttpUtil {
             throw new RuntimeException(e);
         }
     }
-    
+
     /**
      * 获取客户端真实ip地址
      * @param request
@@ -213,15 +213,19 @@ public class PayHttpUtil {
     public static String getRealClientIp(HttpServletRequest request) {
         try{
             String ip = request.getHeader("X-Forwarded-For");
-            if(StringUtils.isNotBlank(ip) && IP_PATTERN.matcher(ip).matches()){
+            if(StringUtils.isNotBlank(ip)){
                 //多次反向代理后会有多个ip值，第一个ip才是真实ip
                 int index = ip.indexOf(",");
+                String _ip;
                 if(index != -1){
 //                    log.info(":::获取客户端真实ip地址:::".concat(ip.substring(0,index)));
-                    return ip.substring(0,index);
+                    _ip = ip.substring(0,index);
                 }else{
 //                    log.info(":::获取客户端真实ip地址:::".concat(ip));
-                    return ip;
+                    _ip = ip;
+                }
+                if(IP_PATTERN.matcher(_ip).matches()){
+                    return _ip;
                 }
             }
             ip = request.getHeader("X-Real-IP");
@@ -234,7 +238,7 @@ public class PayHttpUtil {
         }catch(Exception ex){
 //            log.error(":::获取客户端真实ip地址异常:::", ex);
         }
-        
+
 //        log.info(":::获取客户端真实ip地址:::".concat("127.0.0.1"));
         return "127.0.0.1";
     }

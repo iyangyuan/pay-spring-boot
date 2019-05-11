@@ -223,27 +223,27 @@ public class WxTransferTrade implements TransferTrade {
         public WxTransferTrade build(){
             return new WxTransferTrade(this);
         }
-        
-        /**
-         * 自定义构造器
-         * @return
-         */
-        public static Builder custom(){
-            Builder builder = new Builder();
-            
-            return builder.appid(WxPayConfig.getAppid())
-                            .mchid(WxPayConfig.getMchid())
-                            .nonceStr(PayMD5.encode(UUID.randomUUID().toString()));
-        }
-        
-        /**
-         * 转账构造器
-         * @return
-         */
-        public static Builder transfer(){
-            return custom().checkName("FORCE_CHECK")
-                            .spbillCreateIp("59.110.47.105");
-        }
+
     }
-    
+
+    /**
+     * 自定义构造器
+     * @return
+     */
+    public static Builder custom(){
+        Builder builder = new Builder();
+
+        return builder.appid(WxPayConfig.getAppid())
+                .mchid(WxPayConfig.getMchid())
+                .nonceStr(PayMD5.encode(UUID.randomUUID().toString()));
+    }
+
+    /**
+     * 转账构造器
+     * @return
+     */
+    public static Builder transfer(){
+        return custom().checkName("NO_CHECK");
+    }
+
 }

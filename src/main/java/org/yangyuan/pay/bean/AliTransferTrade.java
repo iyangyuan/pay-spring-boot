@@ -257,39 +257,36 @@ public class AliTransferTrade implements TransferTrade {
         public AliTransferTrade build(){
             return new AliTransferTrade(this);
         }
-        
-        /**
-         * 通用构造器
-         * @return
-         */
-        public static Builder basic(){
-            Builder builder = new Builder();
-            
-            return builder.appid(AliPayConfig.getAppid());
-        }
-        
-        /**
-         * 转账构造器
-         * <br>
-         * 默认使用支付宝登陆账号转账
-         * @return
-         */
-        public static Builder transfer(){
-            return basic().method("alipay.fund.trans.toaccount.transfer")
-                            .payeeType("ALIPAY_LOGONID");
-        }
-        
-        /**
-         * 转账查询构造器
-         * @return
-         */
-        public static Builder status(){
-            return basic().method("alipay.fund.trans.order.query");
-        }
-        
-    } 
-    
-    
-    
-    
+
+    }
+
+    /**
+     * 通用构造器
+     * @return
+     */
+    public static Builder basic(){
+        Builder builder = new Builder();
+
+        return builder.appid(AliPayConfig.getAppid());
+    }
+
+    /**
+     * 转账构造器
+     * <br>
+     * 默认使用支付宝登陆账号转账
+     * @return
+     */
+    public static Builder transfer(){
+        return basic().method("alipay.fund.trans.toaccount.transfer")
+                .payeeType("ALIPAY_LOGONID");
+    }
+
+    /**
+     * 转账查询构造器
+     * @return
+     */
+    public static Builder query(){
+        return basic().method("alipay.fund.trans.order.query");
+    }
+
 }

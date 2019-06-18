@@ -106,6 +106,23 @@ public class DefaultRedisResourceFactory implements RedisResourceFactory {
 
 
 
+> 配置Spring扫描包路径
+
+由于`pay-spring-boot`模块与你的项目不在同一个包名下，`Spring`默认不会扫描`pay-spring-boot`模块，因此必须手动配置。
+
+在`Spring Boot`项目入口类中，找到`@SpringBootApplication`注解，添加`scanBasePackages`参数，其中`com.yourself`是你自己的项目包路径，根据实际情况修改，`org.yangyuan`为`pay-spring-boot`模块包路径，无需改动。例如：
+
+```
+@SpringBootApplication(scanBasePackages={"com.yourself", "org.yangyuan"})
+public class AdminApplication {
+  public static void main(String[] args) {
+    SpringApplication.run(AdminApplication.class, args);
+  }
+}
+```
+
+
+
 ## 如何支付
 
 一般来说，项目中会有不同的支付场景，比如：购买商品、充值等支付业务。
@@ -341,6 +358,8 @@ public void notify(HttpServletRequest request, HttpServletResponse response){
 回调处理非常规范化，基本不需要做什么改动(直接Copy)，唯一需要做的，也是非常重要的，就是根据你自己项目的实际情况，以恰当的方式持久化回调数据。
 
 这里的`@PostMapping`请求路径，就是配置在`application.yml`中的`notifyURL`，必须保证公网可以无障碍访问。
+
+**注意：支付宝、微信服务器会并发请求回调接口(一般为1~3次)，必须保证幂等性！**
 
 
 
